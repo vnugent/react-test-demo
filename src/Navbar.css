@@ -1,0 +1,12 @@
+.Navbar {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+}
+
+.Navbar li {
+     float: left;
+    display: block;
+    padding: 16px;
+
+}
