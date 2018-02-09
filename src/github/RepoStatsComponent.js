@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import StarComponent from "./StarComponent";
 import IssueComponent from "./IssueComponent";
 
-import { get_repo_details, get_repo_issues } from "../model/GithubApi";
+import github from "../model/GithubApi";
 
 class RepoStatsComponent extends Component {
   constructor(props) {
@@ -15,19 +15,7 @@ class RepoStatsComponent extends Component {
   }
 
   componentDidMount = () => {
-    get_repo_details(this.props.userName, this.props.repoName, data => {
-      this.setState({
-        star_count: data.stargazers_count,
-        open_issues_count: data.open_issues_count
-      });
-    });
-
-    // get_repo_issues("kubernetes", "kubernetes", data => {
-    //   console.log(data);
-    //   this.setState({
-    //     issueList: data
-    //   });
-    // });
+    this.update_repo_stats();
   };
 
   render() {
@@ -41,6 +29,15 @@ class RepoStatsComponent extends Component {
       </div>
     );
   }
+
+  update_repo_stats = () => {
+    github.get_repo_details(this.props.userName, this.props.repoName, data => {
+      this.setState({
+        star_count: data.stargazers_count,
+        open_issues_count: data.open_issues_count
+      });
+    });
+  };
 }
 
 export default RepoStatsComponent;
