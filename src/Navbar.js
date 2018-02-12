@@ -1,22 +1,11 @@
-import React, { Component } from "react";
-
-import "./Navbar.css";
+import React from "react";
 
 const Navbar = () => {
   return (
-    <div>
-      <ul className="Navbar">
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="https://www.wikipedia.org/">Wikipedia</a>
-        </li>
-        <li>
-          <a href="https://github.com">Github</a>
-        </li>
-      </ul>
-    </div>
+    <nav className="navbar-component">
+      <a href="/">Home</a> |
+      <a href="https://github.com">Github</a>
+    </nav>
   );
 };
 

@@ -2,10 +2,12 @@
     list-style-type: none;
     padding: 0;
     overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .Navbar li {
-     float: left;
+    /* float: left; */
     display: block;
     padding: 16px;
 

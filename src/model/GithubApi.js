@@ -1,37 +1,31 @@
 import GitHub from "github-api";
 
-class GitHubApi {
-  constructor() {
-    const token = process.env.REACT_APP_GITHUB_TOKEN;
-    if (token === undefined || token === "") {
-      throw new Error("REACT_APP_GITHUB_TOKEN not defined");
-    }
-
-    this.gh = new GitHub({
-      username: "vnugent",
-      token: token
-    });
-  }
-
-  get_repo_details = (userId, repoName, resultFn) => {
-    const repo = this.gh.getRepo(userId, repoName);
-    repo.getDetails().then(data => {
-      if (data.status === 200) {
-        resultFn(data.data);
-      }
-    });
-  };
-
-  get_repo_issues = (userId, repoName, resultFn) => {
-    const issueWrapper = this.gh.getIssues(userId, repoName);
-    issueWrapper.listIssues().then(data => {
-      if (data.status === 200) {
-        resultFn(data);
-      }
-    });
-  };
+const token = process.env.REACT_APP_GITHUB_TOKEN;
+if (token === undefined || token === "") {
+  console.error("REACT_APP_GITHUB_TOKEN not defined");
 }
 
-const github = new GitHubApi();
+const gh = new GitHub({
+  username: "vnugent",
+  token: token
+});
 
-export default github;
+const get_repo_details = (userId, repoName, resultFn) => {
+  const repo = gh.getRepo(userId, repoName);
+  repo.getDetails().then(data => {
+    if (data.status === 200) {
+      resultFn(data.data);
+    }
+  });
+};
+
+const get_repo_issues = (userId, repoName, resultFn) => {
+  const issueWrapper = gh.getIssues(userId, repoName);
+  issueWrapper.listIssues().then(data => {
+    if (data.status === 200) {
+      resultFn(data);
+    }
+  });
+};
+
+export { get_repo_details, get_repo_issues };

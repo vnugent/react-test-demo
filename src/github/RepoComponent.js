@@ -3,9 +3,9 @@ import React, { Component } from "react";
 import StarComponent from "./StarComponent";
 import IssueComponent from "./IssueComponent";
 
-import github from "../model/GithubApi";
+import { get_repo_details } from "../model/GithubApi";
 
-class RepoStatsComponent extends Component {
+class RepoComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +20,7 @@ class RepoStatsComponent extends Component {
 
   render() {
     return (
-      <div>
+      <div className="repo-component">
         <h1>{`${this.props.userName}/${this.props.repoName}`}</h1>
         <div>
           <StarComponent starCount={this.state.star_count} />
@@ -31,7 +31,7 @@ class RepoStatsComponent extends Component {
   }
 
   update_repo_stats = () => {
-    github.get_repo_details(this.props.userName, this.props.repoName, data => {
+    get_repo_details(this.props.userName, this.props.repoName, data => {
       this.setState({
         star_count: data.stargazers_count,
         open_issues_count: data.open_issues_count
@@ -40,4 +40,4 @@ class RepoStatsComponent extends Component {
   };
 }
 
-export default RepoStatsComponent;
+export default RepoComponent;

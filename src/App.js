@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Navbar from "./Navbar";
-import RepoStatsComponent from "./github/RepoStatsComponent";
+import RepoComponent from "./github/RepoComponent";
 import "./App.css";
 
 class App extends Component {
@@ -9,9 +9,9 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        <RepoStatsComponent userName="kubernetes" repoName="kubernetes" />
-        <RepoStatsComponent userName="facebook" repoName="react" />
-        <RepoStatsComponent userName="torvalds" repoName="linux" />
+        <RepoComponent userName="kubernetes" repoName="kubernetes" />
+        <RepoComponent userName="facebook" repoName="react" />
+        <RepoComponent userName="torvalds" repoName="linux" />
       </div>
     );
   }
