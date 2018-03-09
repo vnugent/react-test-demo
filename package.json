@@ -1,7 +1,8 @@
 {
   "name": "react-test-demo",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.1",
+  "private": false,
+  "main": "App.js",
   "dependencies": {
     "github-api": "^3.0.0",
     "react": "^16.2.0",

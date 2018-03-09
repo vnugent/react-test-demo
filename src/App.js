@@ -11,7 +11,7 @@ class App extends Component {
         <Navbar />
         <RepoComponent userName="kubernetes" repoName="kubernetes" />
         <RepoComponent userName="facebook" repoName="react" />
-        <RepoComponent userName="torvalds" repoName="linux" />
+        <RepoComponent userName="swift-sunshine" repoName="swscore" />
       </div>
     );
   }
